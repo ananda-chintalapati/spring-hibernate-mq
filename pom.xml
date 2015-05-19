@@ -5,15 +5,54 @@
 	<artifactId>NiitSpring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<url>http://repo1.maven.org/maven2/</url>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/Niit</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<include>**/*UT.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+	
 	<properties>
+
+		<!-- Generic properties -->
 		<java.version>1.6</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Spring -->
 		<spring-framework.version>4.0.3.RELEASE</spring-framework.version>
+
+		<!-- Hibernate / JPA -->
+		<!-- <hibernate.version>4.3.5.Final</hibernate.version> -->
 		<hibernate.version>3.6.9.Final</hibernate.version>
+
+		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
+
 	</properties>
 
 	<dependencies>
+		<!-- Spring and Transactions -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -118,9 +157,7 @@
 		<dependency>
 			<groupId>org.jvnet.jax-ws-commons.spring</groupId>
 			<artifactId>jaxws-spring</artifactId>
-			<version>1.8</version>
-			<scope>system</scope>
-		   	<systemPath>${project.basedir}/src/main/resources/jaxws-spring-1.8.jar</systemPath>
+			<version>1.9</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
